@@ -1,9 +1,7 @@
 curl -LJO https://github.com/philipnickel/Scipts/raw/main/basictex.zip
 curl -LJO https://github.com/philipnickel/Scipts/raw/main/pandoc_intel.zip
 
-# unzip the files
-unzip basictex.zip
-unzip pandoc_intel.zip
+
 
 # install basictex
 cd basictex
