@@ -128,15 +128,13 @@ echo "Updating nbconvert"
 python_installations=(/usr/local/bin/python*)
 
 
-# Iterate over each Python installation and run the force reinstall nbconvert command
+# Doing it for regular python installations
 for python_executable in "${python_installations[@]}"; do
     echo "Running force reinstall nbconvert for $python_executable"
     "$python_executable" -m pip install --force-reinstall nbconvert > /dev/null
 done
 
-# if conda command works in the terminal
-# get the list of conda environments
-# iterate over each conda environment and run the force reinstall nbconvert command by first activating the environment and then running the command 
+# Doing it for conda environments
 if command -v conda &> /dev/null; then
     conda_envs=$(conda env list | awk '{print $1}' | tail -n +3)
     for conda_env in $conda_envs; do
