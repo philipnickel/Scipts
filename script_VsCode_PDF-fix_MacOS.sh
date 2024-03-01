@@ -1,7 +1,7 @@
 echo "Script by Python Installation Support DTU"
 
 echo "This script will install dependencies for exporting Jupyter Notebooks to PDF in Visual Studio Code."
-
+echo "You will need to type your password to the computer at some point during the installation."
 # do you wish to continue? You will need to enter your password to the computer.
 read -p "Do you wish to continue? (y/n) " -n 1 -r
 echo
@@ -17,7 +17,7 @@ sleep 1
 
 #
 
-echo "Please enter your password to the computer and press enter."
+
 sleep 1 
 # check for pandoc
 if ! command -v pandoc &> /dev/null; then
