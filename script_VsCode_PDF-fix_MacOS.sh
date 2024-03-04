@@ -123,7 +123,7 @@ sudo tlmgr update --all > /dev/null
 echo "Finished updating TeX packages"
 
 echo "Updating nbconvert"
-python3 -m pip install --force-reinstall nbconvert > /dev/null
+python3 -m pip3 install --force-reinstall nbconvert > /dev/null
 
 echo "Finished updating nbconvert"
 
