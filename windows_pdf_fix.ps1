@@ -38,7 +38,6 @@ else {
 
 # reset terminal to use miktex
 RefreshEnv
-initexmf --set-config-value=[MPM]AutoInstall=yes
 
 
 Write-Host "Updating nbconvert..."
