@@ -3,14 +3,6 @@ echo "Script by Python Installation Support DTU"
 echo "This script will install dependencies for exporting Jupyter Notebooks to PDF in Visual Studio Code."
 
 
-# Do you wish to continue?
-read -p "Do you wish to continue? (y/n) " yn
-case $yn in
-    [Yy]* ) echo "Continuing...";;
-    [Nn]* ) echo "Exiting..."; exit;;
-    * ) echo "Please answer yes or no.";;
-esac
-
 echo "This script will take a while to run, please be patient, and don't close your terminal before it says 'script finished'."
 sleep 1
 
