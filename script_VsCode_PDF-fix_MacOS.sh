@@ -123,28 +123,7 @@ sudo tlmgr update --all > /dev/null
 echo "Finished updating TeX packages"
 
 echo "Updating nbconvert"
-
-# Find Python installations in /usr/local/bin
-python_installations=(/usr/local/bin/python*)
-
-
-# Doing it for regular python installations
-for python_executable in "${python_installations[@]}"; do
-    echo "Running force reinstall nbconvert for $python_executable"
-    "$python_executable" -m pip install --force-reinstall nbconvert > /dev/null
-done
-
-# Doing it for conda environments
-if command -v conda &> /dev/null; then
-    conda_envs=$(conda env list | awk '{print $1}' | tail -n +3)
-    for conda_env in $conda_envs; do
-        echo "Running force reinstall nbconvert for conda environment $conda_env"
-        conda activate $conda_env
-        python3 -m pip install --force-reinstall nbconvert > /dev/null
-        conda deactivate
-    done
-fi
-
+python3 -m pip install --force-reinstall nbconvert > /dev/null
 
 echo "Finished updating nbconvert"
 
