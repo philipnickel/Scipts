@@ -1,47 +1,50 @@
 # echo 
-echo "Script by Python Installation Support DTU"
-echo "This script will install dependencies for exporting Jupyter Notebooks to PDF in Visual Studio Code."
+Write-Host "Script by Python Installation Support DTU"
+Write-Host "This script will install dependencies for exporting Jupyter Notebooks to PDF in Visual Studio Code."
 
 
-echo "This script will take a while to run, please be patient, and don't close your terminal before it says 'script finished'."
-sleep 1
+Write-Host "This script will take a while to run, please be patient, and don't close your terminal before it says 'script finished'."
+Start-Sleep -Seconds 1
 
 # check for chocolatey
-if [ -x "$(command -v choco)" ]; then
-    echo "Chocolatey is already installed."
-else
-    echo "Chocolatey is not installed. Installing chocolatey..."
+if (Get-Command choco -ErrorAction SilentlyContinue) {
+    Write-Host "Chocolatey is already installed."
+}
+else {
+    Write-Host "Chocolatey is not installed. Installing chocolatey..."
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-fi
+}
 
 # reset terminal to use chocolatey
-refreshenv
+RefreshEnv
 
 # check for pandoc
-if [ -x "$(command -v pandoc)" ]; then
-    echo "Pandoc is already installed."
-else
-    echo "Pandoc is not installed. Installing pandoc..."
+if (Get-Command pandoc -ErrorAction SilentlyContinue) {
+    Write-Host "Pandoc is already installed."
+}
+else {
+    Write-Host "Pandoc is not installed. Installing pandoc..."
     choco install pandoc -y
-fi
+}
 
 # check for miktex
-if [ -x "$(command -v miktex)" ]; then
-    echo "Miktex is already installed."
-else
-    echo "Miktex is not installed. Installing miktex..."
+if (Get-Command miktex -ErrorAction SilentlyContinue) {
+    Write-Host "Miktex is already installed."
+}
+else {
+    Write-Host "Miktex is not installed. Installing miktex..."
     choco install miktex -y
-fi
+}
 
 # reset terminal to use miktex
-refreshenv
+RefreshEnv
 initexmf --set-config-value=[MPM]AutoInstall=yes
 
 
-echo "Updating nbconvert..."
+Write-Host "Updating nbconvert..."
 pip install --force-reinstall nbconvert
 
-echo "Script finished."
-echo "Please make sure to restart visual studio code for the changes to take effect."
-echo "If you have multiple versions of python installed and pdf exporting doesn't work,  try running "python3 -m pip install --force-reinstall nbconvert" for the version of python you are using in your notebook. You can do this directly in the vs code terminal (terminal -> new terminal)"
-echo "If it still doesn't work resolve to using pdf export via HTML (Export as HTML and then convert to pdf using a browser)."
+Write-Host "Script finished."
+Write-Host "Please make sure to restart visual studio code for the changes to take effect."
+Write-Host "If you have multiple versions of python installed and pdf exporting doesn't work,  try running 'python3 -m pip install --force-reinstall nbconvert' for the version of python you are using in your notebook. You can do this directly in the vs code terminal (terminal -> new terminal)"
+Write-Host "If it still doesn't work resolve to using pdf export via HTML (Export as HTML and then convert to pdf using a browser)."
