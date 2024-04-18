@@ -44,7 +44,7 @@ fi
 if ! command -v tlmgr &> /dev/null; then
     # install BasicTex 
     echo "installing BasicTex"
-    curl -LJO https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg > /dev/null
+    curl -LJO https://mirrors.dotsrc.org/ctan/systems/mac/mactex/BasicTeX.pkg  > /dev/null
     sudo installer -pkg BasicTeX.pkg -target / > /dev/null
     rm BasicTeX.pkg
     echo "Installation complete"
