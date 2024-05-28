@@ -1,10 +1,7 @@
-
-
-
 # Installing dependancies for converting Jupyter notebooks to PDFs.
 ## MacOS
 
-```bash
+```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/philipnickel/Scipts/main/script_VsCode_PDF-fix_MacOS.sh)"
 ```
 
